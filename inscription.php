@@ -1,12 +1,5 @@
 <?php
-$dsn = 'mysql:dbname=e-commerce;host=localhost';
-$user = 'root';
-$password = '';
-try {
-    $db = new PDO($dsn, $user, $password);
-} catch (PDOException $e) {
-    echo 'Connexion échouée : ' . $e->getMessage();
-}
+require('./includes/init.php');
 ?>
 
 <h2>Inscription</h2>
@@ -55,29 +48,33 @@ if ((isset($_POST)) && (!empty($_POST['username'])) && (!empty($_POST['last_name
             echo "Les adresses mail ne sont pas identiques";
         }
         else {
+            $password = crypt($_POST['password'], '$2a$07$azds8dfbn2sdseferd54gfhjkelqa$');
+            $password2 = crypt($_POST['password2'], '$2a$07$azds8dfbn2sdseferd54gfhjkelqa$');
             //Vérification que les mots de passe sont identiques
-            if ($_POST['password'] != $_POST['password2']) {
+            if ($password != $password2) {
                 echo "Les mots de passe ne sont pas identiques";
             }
             else {
                 //Envoi des données en bdd
-                $request = $db->prepare("INSERT INTO user VALUES (NULL, :username, :last_name, :first_name, :mail, :password, :date_of_birth,
-                                            :address, :details, :postal_code, :city, :country, :phone, :company)");
-                $sending = $request->execute([
+                $request = $db->prepare("INSERT INTO user (username, last_name, first_name, mail, password, date_of_birth, address, 
+                                          details, postal_code, city, country, phone) VALUES (:username, :last_name, :first_name, :mail, :password, :date_of_birth,
+                                            :address, :details, :postal_code, :city, :country, :phone)");
+                $request->execute([
                     ':username' => $_POST['username'],
                     ':last_name' => $_POST['last_name'],
                     ':first_name' => $_POST['first_name'],
                     ':mail' => $_POST['mail'],
-                    ':password' => $_POST['password'],
+                    ':password' => $password,
                     ':date_of_birth' => $_POST['birth'],
                     ':address' => $_POST['address'],
                     ':details' => $_POST['details'],
                     ':postal_code' => $_POST['postal_code'],
                     ':city' => $_POST['city'],
                     ':country' => $_POST['country'],
-                    ':phone' => $_POST['phone'],
-                    ':company' => $_POST['company']
+                    ':phone' => $_POST['phone']
                 ]);
+                //print_r($request->errorInfo());
+                echo "Inscrit";
 
                 //Redirection (header) vers l'index à rajouter une fois créé
             }
