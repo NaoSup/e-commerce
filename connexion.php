@@ -18,7 +18,6 @@ include("includes/init.php");
     <input type="password" name="password" id="password" placeholder="password">
     <input type="submit" value="Valider">
 
-    <p><a href="deconnexion.php">Déconnection</a></p>
 </form>
 </body>
 </html>
@@ -26,7 +25,7 @@ include("includes/init.php");
 <?php
 
 if ((isset($_POST)) && (!empty($_POST['username'])) && (!empty($_POST['password']))) {
-    $password = sha1($_POST['password']);
+    $password = crypt($_POST['password'], '$2a$07$azds8dfbn2sdseferd54gfhjkelqa$');
     $request = $db->prepare("SELECT * FROM user WHERE username=:username AND password=:password");
     $request->execute([
         ':username' => htmlentities($_POST['username']),

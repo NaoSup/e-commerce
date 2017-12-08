@@ -19,8 +19,7 @@ require('./includes/init.php');
     <label for="password2">Confirmation mot de passe</label><br>
     <input type="password" name="password2" id="password2"><br>
     <label for="birth">Date de naissance</label><br>
-    <i> format : AAAA-MM-JJ exemple: 1987-06-15</i><br>
-    <input type="text" name="birth" id="birth" value="<?php if(isset($_POST['birth'])){echo $_POST['birth'];} ?>"><br>
+    <input type="date" name="birth" id="birth"><br>
     <label for="address">Adresse</label><br>
     <input type="text" name="address" id="address"value="<?php if(isset($_POST['address'])){echo $_POST['address'];} ?>"><br>
     <label for="details">Autres informations (bâtiment, appt, escaliers,...) <i>(facultatif)</i></label><br>
@@ -55,6 +54,12 @@ if ((isset($_POST)) && (!empty($_POST['username'])) && (!empty($_POST['last_name
                 echo "Les mots de passe ne sont pas identiques";
             }
             else {
+                //on convertit la date pour la mettre au format de la bdd
+                $array = explode("-", $_POST['birth']);
+                $day = $array[0];
+                $month = $array[1];
+                $year = $array['2'];
+                $date =$year."-".$month."-".$day;
                 //Envoi des données en bdd
                 $request = $db->prepare("INSERT INTO user (username, last_name, first_name, mail, password, date_of_birth, address, 
                                           details, postal_code, city, country, phone) VALUES (:username, :last_name, :first_name, :mail, :password, :date_of_birth,
@@ -65,7 +70,7 @@ if ((isset($_POST)) && (!empty($_POST['username'])) && (!empty($_POST['last_name
                     ':first_name' => $_POST['first_name'],
                     ':mail' => $_POST['mail'],
                     ':password' => $password,
-                    ':date_of_birth' => $_POST['birth'],
+                    ':date_of_birth' => $date,
                     ':address' => $_POST['address'],
                     ':details' => $_POST['details'],
                     ':postal_code' => $_POST['postal_code'],
@@ -75,7 +80,9 @@ if ((isset($_POST)) && (!empty($_POST['username'])) && (!empty($_POST['last_name
                 ]);
                 //print_r($request->errorInfo());
                 echo "Inscrit";
-
+                ?>
+                <p>Vous pouvez vous <a href="connexion.php">connecter</a>.</p>
+                <?php
                 //Redirection (header) vers l'index à rajouter une fois créé
             }
         }

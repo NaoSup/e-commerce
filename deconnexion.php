@@ -2,7 +2,7 @@
 
 session_start();
 session_destroy();
-header('Location: inscription.php');
+header('Location: connexion.php');
 exit();
 
 ?>
