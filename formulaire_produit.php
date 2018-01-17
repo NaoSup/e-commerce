@@ -68,16 +68,6 @@ if(isset($_SESSION['id'])) {
         && (!empty($_POST['price'])) && (!empty($_POST['status'])) && (!empty($_POST['description']))
         && (!empty($_POST['receipt'])) && (!empty($_POST['warrantly'])) && (!empty($_FILES['photo']))
     ) {
-        if (!empty($_POST['purchase_date'])) {
-            $array = explode("-", $_POST['purchase_date']);
-            $day = $array[0];
-            $month = $array[1];
-            $year = $array['2'];
-            $date = $year . "-" . $month . "-" . $day;
-        } else {
-            $date = NULL;
-        }
-
         $directory = 'img/';
         $extensions = array('png', 'jpeg', 'jpg'); //extension autorisé pour les images.
         $mimes = array('image/png', 'image/jpeg'); //extension autorisé pour les images
@@ -120,7 +110,7 @@ if(isset($_SESSION['id'])) {
                         ':description' => $_POST['description'],
                         ':receipt' => $_POST['receipt'],
                         ':warrantly' => $_POST['warrantly'],
-                        ':purchase_date' => $date,
+                        ':purchase_date' => $_POST['purchase_date'],
                         ':seller' => $_SESSION['id'],
                         ':photo' => $new_path
                     ]);
