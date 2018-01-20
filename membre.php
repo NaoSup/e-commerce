@@ -88,7 +88,7 @@ if (!empty($items)) {
 
 <?php
 
-$req = $db->query("SELECT * FROM item WHERE id_buyer IS NOT NULL");
+$req = $db->query("SELECT * FROM item WHERE id_buyer IS NOT NULL AND id_seller = $id");
 $items = $req->fetchAll();
 if (!empty($items)) {
     ?>
