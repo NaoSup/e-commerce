@@ -126,7 +126,9 @@ if (!empty($items)) {
                     </a>
                 </td>
                 <td>
-                    <?php echo $item['name']; ?>
+                    <a href="page_produit.php?id_item=<?php echo $item['id_item']?>" class="dark_link">
+                        <?php echo $item['name']; ?>
+                    </a>
                 </td>
             </tr>
 
