@@ -45,11 +45,11 @@ if(isset($_SESSION['id'])) {
                 <option value="autres">Autres</option>
             </optgroup>
         </select><br>
-        <label for="brand">Marque</label><br>
+        <label for="brand">Marque/Editeur</label><br>
         <input type="text" name="brand" id="brand" value="<?php if (isset($_POST['brand'])) {
             echo $_POST['brand'];
         } ?>"><br>
-        <label for="price">Prix</label><br>
+        <label for="price">Prix (en euros)</label><br>
         <input type="text" name="price" id="price" value="<?php if (isset($_POST['price'])) {
             echo $_POST['price'];
         } ?>"><br>

@@ -63,7 +63,9 @@ if (!empty($items)) {
                     <?php echo $item['date'];?>
                 </td>
                 <td>
-                    <?php echo $item['name']; ?>
+                    <a href="page_produit.php?id_item=<?php echo $item['id_item']?>">
+                        <?php echo $item['name']; ?>
+                    </a>
                 </td>
             </tr>
             <?php
@@ -121,12 +123,12 @@ if (!empty($items)) {
                     ?>
                 </td>
                 <td>
-                    <a href="Profil/profil.php?id_user=<?php echo $item['id_buyer']?>">
+                    <a href="profil.php?id_user=<?php echo $item['id_buyer']?>">
                         <?php echo $user['username']; ?>
                     </a>
                 </td>
                 <td>
-                    <a href="page_produit.php?id_item=<?php echo $item['id_item']?>" class="dark_link">
+                    <a href="page_produit.php?id_item=<?php echo $item['id_item']?>">
                         <?php echo $item['name']; ?>
                     </a>
                 </td>
@@ -190,7 +192,9 @@ if (!empty($res)) {
                     </a>
                 </td>
                 <td>
-                    <?php echo $item['name']; ?>
+                    <a href="page_produit.php?id_item=<?php echo $item['id_item']?>">
+                        <?php echo $item['name']; ?>
+                    </a>
                 </td>
                 <td>
                     <?php echo $item['price']; ?>

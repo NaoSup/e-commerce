@@ -44,6 +44,8 @@ $seller = $req->fetch();
             Marque/Editeur : <?php echo $item['brand']; ?> <br>
             <span id="price">Prix : <?php echo $item['price']; ?> €<br></span>
             Etat : <?php echo $item['status']; ?> <br>
+            Date d'achat : <?php if(isset($item['purchase_date'])) {echo $item['purchase_date'];} else {echo "Non renseigné";} ?>
+            <br>
             Reçu : <?php echo $item['receipt']; ?> <br>
             Garantie : <?php echo $item['warrantly']; ?> <br>
             <p>
@@ -53,8 +55,9 @@ $seller = $req->fetch();
         <?php
             if($_SESSION['id'] == $id_seller){
                 ?>
-                <a href="modif_produit.php">Modifier votre annonce</a><br>
-                <a href="supp_produit.php">Supprimer votre annonce</a><br>
+                <a href="modif_produit.php?id_item=<?php echo $item['id_item']?>">
+                    Modifier votre annonce
+                </a>
         <?php
             }
         ?>
