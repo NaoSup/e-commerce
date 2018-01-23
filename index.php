@@ -43,5 +43,44 @@ foreach ($items as $item) {
     ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+
+<h1>Itech Area</h1>
+
+
+<?php
+if (isset($_SESSION['id'])){
+    ?>
+    <?php
+}
+else{
+    ?>
+    <p>Vous n'avez pas de compte chez ITECH AREA, alors qu'attendez vous pour vous inscrire? Allez cliquer ici <a href="inscription.php">Inscription</a></p>
+
+    <?php
+}
+?>
+
+<p><h3>Voici les annonces publiées:</h3></p>
+
+<p></p>
+<div class="bas"></div>
+<div id="footer">
+    <ul>
+        <p> Copyright 2018 <span>Itech Area</span> aka Pratheepa KONESWARAN, Naomi PAULMIN, Stanley TISSOT </p>
+        <a href="#">Facebook</a>
+        <a href="#">Twitter</a>
+    </ul>
+
+    <div>
+        <h3>Contact:</h3>
+        <p>mail: itech_area@ynov.com</p>
+        <p>telephone:0698457532</p>
+    </div>
+</div>
+
+
 </body>
 </html>
+
