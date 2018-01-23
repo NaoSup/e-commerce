@@ -21,30 +21,11 @@ require('./includes/init.php');
         <li><a href="formulaire_produit.php">Ajouter un produit</a></li>
         <li><a href="membre.php">Mon compte</a></li>
         <li><a href="inscription.php">Inscription</a></li>
-        <li><a href="Connexion">Connexion</a></li>
+        <li><a href="connexion.php">Connexion</a></li>
+        <li><a href="deconnexion.php">Déconnexion</a></li>
+        <li><a href="cart.php">Panier</a></li>
     </ul>
 </div>
-<?php
-$req = $db->query("SELECT * FROM item ORDER BY date desc");
-$items = $req->fetchAll();
-foreach ($items as $item) {
-    $seller = $item['id_seller'];
-    $req = $db->query("SELECT * FROM user WHERE id_user = $seller");
-    $user = $req->fetch();
-    ?>
-    <div class="item">
-        <img src="<?php echo $item['photo'] ?>" alt="" width="200px">
-        <h3><?php echo $item['name'] ?></h3>
-        <h4><?php echo $item['category'] ?></h4>
-        <p><?php echo $item['price'] ?>€</p>
-    </div>
-    <?php
-}
-    ?>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-
 
 <h1>Itech Area</h1>
 
@@ -62,9 +43,24 @@ else{
 }
 ?>
 
-<p><h3>Voici les annonces publiées:</h3></p>
-
-<p></p>
+<?php
+$req = $db->query("SELECT * FROM item ORDER BY date desc");
+$items = $req->fetchAll();
+foreach ($items as $item) {
+    $seller = $item['id_seller'];
+    $req = $db->query("SELECT * FROM user WHERE id_user = $seller");
+    $user = $req->fetch();
+    ?>
+    <div class="item">
+        <img src="<?php echo $item['photo'] ?>" alt="" width="200px">
+        <h3><?php echo $item['name'] ?></h3>
+        <h4><?php echo $item['category'] ?></h4>
+        <p><?php echo $item['price'] ?>€</p>
+        <a href="page_produit.php?id_item=<?php echo $item['id_item'];?>">+ de détails</a>
+    </div>
+    <?php
+}
+?>
 <div class="bas"></div>
 <div id="footer">
     <ul>
@@ -80,7 +76,8 @@ else{
     </div>
 </div>
 
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </body>
 </html>
 

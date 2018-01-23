@@ -28,7 +28,9 @@ else{
         <li><a href="formulaire_produit.php">Ajouter un produit</a></li>
         <li><a href="membre.php">Mon compte</a></li>
         <li><a href="inscription.php">Inscription</a></li>
-        <li><a href="Connexion">Connexion</a></li>
+        <li><a href="connexion.php">Connexion</a></li>
+        <li><a href="deconnexion.php">Déconnexion</a></li>
+        <li><a href="cart.php">Panier</a></li>
     </ul>
 </div>
 <div class="menumembre col-xs-2 col-sm-2 col-md-2 col-lg-2">

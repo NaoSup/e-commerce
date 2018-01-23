@@ -1,6 +1,9 @@
 <?php
 session_start();
 require('./includes/init.php');
+/*$_SESSION['cart'] = array();
+$_SESSION['cart']['id_item'] = array();
+$_SESSION['cart']['price'] = array();*/
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -21,7 +24,9 @@ require('./includes/init.php');
         <li><a href="formulaire_produit.php">Ajouter un produit</a></li>
         <li><a href="membre.php">Mon compte</a></li>
         <li><a href="inscription.php">Inscription</a></li>
-        <li><a href="Connexion">Connexion</a></li>
+        <li><a href="connexion.php">Connexion</a></li>
+        <li><a href="deconnexion.php"></a></li>
+        <li><a href="cart.php">Panier</a></li>
     </ul>
 </div>
 <?php
@@ -60,6 +65,29 @@ $seller = $req->fetch();
                 </a>
         <?php
             }
+            elseif(empty($item['id_buyer'])){
+                ?>
+                <form action="" method="post">
+                    <input type="submit" name="cart" value="Ajouter au panier">
+                </form>
+        <?php
+                if(isset($_POST['cart'])){
+                    if(!isset($_SESSION['cart'])){
+                        $_SESSION['cart'] = array();
+                        $_SESSION['cart']['id_item'] = array();
+                        $_SESSION['cart']['price'] = array();
+                    }
+                    if(in_array($item['id_item'],$_SESSION['cart']['id_item'])){
+                        echo "Ce produit a déjà été ajouté à votre panier.";
+                    }
+                    else{
+                        echo "ok";
+                        array_push($_SESSION['cart']['id_item'], $item['id_item']);
+                        array_push($_SESSION['cart']['price'], $item['price']);
+                    }
+                }
+            }
+            var_dump($_SESSION['cart']);
         ?>
     </div>
 </div>
