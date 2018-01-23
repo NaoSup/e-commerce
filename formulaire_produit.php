@@ -25,7 +25,13 @@ require('./includes/init.php');
         </ul>
     </div>
 <?php
+$id = $_SESSION['id'];
+$req = $db->query("SELECT * FROM user where id_user = $id");
+$user = $req->fetch();
 if(isset($_SESSION['id'])) {
+    if((!empty($user['date_of_birth'])) && (!empty($user['address']))
+    && (!empty($user['postal_code'])) && (!empty($user['city'])) && (!empty($user['country']))
+    && (!empty($user['phone']))) {
     ?>
     <form enctype="multipart/form-data" action="" method="post">
         <label for="name">Titre</label><br>
@@ -143,6 +149,15 @@ if(isset($_SESSION['id'])) {
             }
         }
     }
+}
+else {
+    echo "";
+    ?>
+    <p>
+        Pour pouvoir ajouter une annonce, veuillez <a href="modif_membre.php">remplir votre profil</a>.
+    </p>
+    <?php
+}
 }
 else {
         header('Location: connexion.php');
