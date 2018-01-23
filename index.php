@@ -50,6 +50,7 @@ foreach ($items as $item) {
     $seller = $item['id_seller'];
     $req = $db->query("SELECT * FROM user WHERE id_user = $seller");
     $user = $req->fetch();
+    if(empty($item['id_buyer'])){
     ?>
     <div class="item">
         <img src="<?php echo $item['photo'] ?>" alt="" width="200px">
@@ -59,6 +60,7 @@ foreach ($items as $item) {
         <a href="page_produit.php?id_item=<?php echo $item['id_item'];?>">+ de détails</a>
     </div>
     <?php
+    }
 }
 ?>
 <div class="bas"></div>

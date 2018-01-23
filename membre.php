@@ -62,7 +62,12 @@ if (!empty($items)) {
                     <?php echo $item['id_item']; ?>
                 </td>
                 <td>
-                    <?php echo $item['date'];?>
+                    <?php
+                    $array = explode(" ", $item['date']);
+                    $date = explode("-",$array[0]);
+                    $new_date = "$date[2]-$date[1]-$date[0]";
+                    echo $new_date;
+                    ?>
                 </td>
                 <td>
                     <a href="page_produit.php?id_item=<?php echo $item['id_item']?>">
@@ -153,10 +158,9 @@ if (!empty($items)) {
 <h3>Historique de vos achats</h3>
 
 <?php
-
 $req = $db->query("SELECT * FROM item WHERE id_buyer = $id");
-$res = $req->fetchAll();
-if (!empty($res)) {
+$items = $req->fetchAll();
+if (!empty($items)) {
     ?>
 
     <table class="table table-striped table-hover">
@@ -199,7 +203,7 @@ if (!empty($res)) {
                     </a>
                 </td>
                 <td>
-                    <?php echo $item['price']; ?>
+                    <?php echo $item['price']; ?>€
 
                 </td>
             </tr>

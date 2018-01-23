@@ -25,7 +25,7 @@ $_SESSION['cart']['price'] = array();*/
         <li><a href="membre.php">Mon compte</a></li>
         <li><a href="inscription.php">Inscription</a></li>
         <li><a href="connexion.php">Connexion</a></li>
-        <li><a href="deconnexion.php"></a></li>
+        <li><a href="deconnexion.php">Déconnexion</a></li>
         <li><a href="cart.php">Panier</a></li>
     </ul>
 </div>
@@ -44,12 +44,24 @@ $seller = $req->fetch();
         <img src="<?php echo $item['photo']; ?>" alt="" width="300">
         <h4><?php echo $item['name']; ?></h4>
         <article>
-            Mise en ligne le : <?php echo $item['date']; ?> <br>
+            Mise en ligne le : <?php
+            $array = explode(" ", $item['date']);
+            $date = explode("-",$array[0]);
+            $new_date = "$date[2]-$date[1]-$date[0]";
+            echo $new_date;
+            ?> <br>
             Catégorie : <?php echo $item['category']; ?> <br>
             Marque/Editeur : <?php echo $item['brand']; ?> <br>
             <span id="price">Prix : <?php echo $item['price']; ?> €<br></span>
             Etat : <?php echo $item['status']; ?> <br>
-            Date d'achat : <?php if(isset($item['purchase_date'])) {echo $item['purchase_date'];} else {echo "Non renseigné";} ?>
+            Date d'achat : <?php
+            if(isset($item['purchase_date'])) {
+                $array = explode(" ", $item['purchase_date']);
+                $date = explode("-",$array[0]);
+                $new_date = "$date[2]-$date[1]-$date[0]";
+                echo $new_date;
+            } else {echo "Non renseigné";}
+            ?>
             <br>
             Reçu : <?php echo $item['receipt']; ?> <br>
             Garantie : <?php echo $item['warrantly']; ?> <br>
@@ -58,14 +70,14 @@ $seller = $req->fetch();
             </p>
         </article>
         <?php
-            if($_SESSION['id'] == $id_seller){
+            if(isset($_SESSION['id']) && $_SESSION['id'] == $id_seller){
                 ?>
                 <a href="modif_produit.php?id_item=<?php echo $item['id_item']?>">
                     Modifier votre annonce
                 </a>
         <?php
             }
-            elseif(empty($item['id_buyer'])){
+            elseif(empty($item['id_buyer']) && isset($_SESSION['id'])){
                 ?>
                 <form action="" method="post">
                     <input type="submit" name="cart" value="Ajouter au panier">
@@ -87,7 +99,6 @@ $seller = $req->fetch();
                     }
                 }
             }
-            var_dump($_SESSION['cart']);
         ?>
     </div>
 </div>

@@ -37,7 +37,7 @@ if(isset($_SESSION['cart'])){
             $rq = $db->query("SELECT * FROM item WHERE id_item = $id");
             $product = $rq->fetch();
             echo $product['name'] . "<br>";
-            echo $product['price'] . "<br>";
+            echo $product['price'] . "€ <br>";
         }
     }
     ?>

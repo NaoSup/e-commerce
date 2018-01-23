@@ -50,6 +50,21 @@ $id_user = $_SESSION['id'];
             echo $total;
             ?>
             €</p>
+        <h3>Récapitulatif de vos coordonnées</h3>
+        <?php
+        $id = $_SESSION['id'];
+        $req = $db->query("SELECT * FROM user WHERE id_user = $id");
+        $user = $req->fetch();
+    echo "Nom : ".$user['last_name'] . "<br>";
+    echo "Prénom : ".$user['first_name'] . "<br>";
+    echo "Email : ".$user['mail'] . "<br>";
+    echo "Adresse : ".$user['address'] . "<br>";
+    echo "Details : ".$user['details'] . "<br>";
+    echo "Code Postal : ".$user['postal_code'] . "<br>";
+    echo "Ville : ".$user['city'] . "<br>";
+    echo "Pays : ".$user['country'] . "<br>";
+    echo "Téléphone : ".$user['phone'] . "<br>";
+        ?>
         </div>
         <div class="paiement">
             <h3>Paiement</h3>
@@ -61,8 +76,7 @@ $id_user = $_SESSION['id'];
         </div>
 <?php
         if(isset($_POST['submit'])){
-            $submitbutton= $_POST['submit'];
-
+            if(isset($user['address']) && isset($user['postal_code']) && isset($user['city']) && isset($user['country']) && isset($user['phone'])){
             $number= $_POST['cardnumber'];
 
             $cardtype = array(
@@ -72,7 +86,6 @@ $id_user = $_SESSION['id'];
             );
 
             if (preg_match($cardtype['visa'],$number) || (preg_match($cardtype['mastercard'],$number)) || (preg_match($cardtype['amex'],$number))) {
-                echo "Paiement confirmé !";
                 foreach ($cart as $items) {
                     foreach ($items as $item) {
                         $id = $item[0];
@@ -82,10 +95,19 @@ $id_user = $_SESSION['id'];
                         ]);
                     }
                 }
+                echo "Paiement confirmé !";
+                $_SESSION['cart'] = NULL;
+                var_dump($_SESSION['cart']);
             }
             else
             {
                 echo "Numéro de carte invalide";
+            }
+        }
+        else {
+                ?>
+            <p>Pour pouvoir procéder au paiement, vous devez remplir vos coordonnées dans votre <a href="modif_membre.php">espace membre</a>.</p>
+<?php
             }
         }
 
