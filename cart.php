@@ -15,17 +15,28 @@ require('./includes/init.php');
 </head>
 
 <body>
-<div class="mainmenu">
-    <ul>
-        <li><a href="index.php">Accueil</a></li>
-        <li><a href="formulaire_produit.php">Ajouter un produit</a></li>
-        <li><a href="membre.php">Mon compte</a></li>
-        <li><a href="inscription.php">Inscription</a></li>
-        <li><a href="connexion.php">Connexion</a></li>
-        <li><a href="deconnexion.php">Déconnexion</a></li>
-        <li><a href="cart.php">Panier</a></li>
-    </ul>
-</div>
+    <div class="mainmenu">
+
+        <nav class="navbar navbar-default navbar-inverse">
+            <div class="container-fluid">
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="index.php">Accueil</a></li>
+                        <li><a href="formulaire_produit.php">Ajouter un produit</a></li>
+                        <li><a href="membre.php">Mon compte</a></li>
+                        <li><a href="inscription.php">Inscription</a></li>
+                        <li><a href="connexion.php">Connexion</a></li>
+                        <li><a href="deconnexion.php">Déconnexion</a></li>
+                        <li><a href="cart.php">Panier</a></li>
+                    </ul>
+
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+
+    </div>
+
 <div class="panier">
 <?php
 //var_dump($_SESSION['cart']);
