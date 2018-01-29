@@ -47,6 +47,8 @@ if(isset($_SESSION['id'])) {
     && (!empty($user['postal_code'])) && (!empty($user['city'])) && (!empty($user['country']))
     && (!empty($user['phone']))) {
     ?>
+<div class="form-style-10">
+    <h1>Ajouter un produit</h1>
     <form enctype="multipart/form-data" action="" method="post">
         <label for="name">Titre</label><br>
         <input type="text" name="name" id="name" value="<?php if (isset($_POST['name'])) {
@@ -106,6 +108,7 @@ if(isset($_SESSION['id'])) {
         </select><br><br>-->
         <input type="submit" content="Publier l'annonce">
     </form>
+</div>
     <?php
     if ((isset($_POST)) && (!empty($_POST['name'])) && (!empty($_POST['category'])) && (!empty($_POST['brand']))
         && (!empty($_POST['price'])) && (!empty($_POST['status'])) && (!empty($_POST['description']))

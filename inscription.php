@@ -36,8 +36,8 @@ require('./includes/init.php');
 
 </div>
 
-
-<h2>Inscription</h2>
+<div class="form-style-10">
+<h1>Inscription</h1>
     <form action="" method="post">
         <label for="username">Pseudo</label><br>
         <input type="text" name="username" id="username" value="<?php if (isset($_POST['username'])) {
@@ -66,6 +66,7 @@ require('./includes/init.php');
 
         <input type="submit" content="S'inscrire">
     </form>
+</div>
 <?php
 //Vérification que les champs obligatoires sont bien remplis
 if ((isset($_POST)) && (!empty($_POST['username'])) && (!empty($_POST['last_name'])) && (!empty($_POST['first_name']))

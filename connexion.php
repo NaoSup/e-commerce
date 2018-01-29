@@ -39,13 +39,16 @@ include("includes/init.php");
 
     </div>
 
-
+    <div class="form-style-10">
     <form action="" method="post">
-    <input type="text" name="username" id="username" placeholder="username">
-    <input type="password" name="password" id="password" placeholder="password">
+    <label for="username">Pseudo</label>
+    <input type="text" name="username" id="username" placeholder="username"><br>
+    <label for="username">Password</label>
+    <input type="password" name="password" id="password" placeholder="password"><br>
     <input type="submit" value="Valider">
 
 </form>
+    </div>
 
 
 <?php

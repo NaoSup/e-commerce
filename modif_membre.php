@@ -42,7 +42,8 @@ $id = $_SESSION['id'];
 $req = $db->query("SELECT * FROM user WHERE id_user = $id");
 $user = $req->fetch();
 ?>
-<h3>Modifier votre photo de profil</h3>
+<div class="form-style-10">
+<h1>Modifier votre photo de profil</h1>
 <form enctype="multipart/form-data" action="" method="post" >
     <?php
     if(isset($user['photo'])){
@@ -61,6 +62,7 @@ $user = $req->fetch();
     <input type="file" name="photo"><br><br>
     <input type="submit" value="Modifier ma photo" name="sub_photo">
 </form>
+</div>
 <?php
 
     if(isset($_POST['sub_photo']) && !empty($_FILES['photo'])){
@@ -106,33 +108,34 @@ $user = $req->fetch();
         }
     }
 ?>
-<h3>Modifier vos informations personnelles</h3>
+<div class="form-style-10">
+<h1>Modifier vos informations personnelles</h1>
 <form action="" method="post" name="infos">
-    <label for="username">Pseudo</label><br>
-    <input type="text" name="username" id="username" value="<?php echo $user['username'];?>" disabled><br><br>
-    <label for="last_name">Nom</label><br>
-    <input type="text" name="last_name" id="last_name" value="<?php if (isset($user['last_name'])) {echo $user['last_name'];} ?>"><br><br>
-    <label for="first_name">Prénom</label><br>
-    <input type="text" name="first_name" id="first_name" value="<?php if (isset($user['first_name'])) {echo $user['first_name'];} ?>"><br><br>
-    <label for="mail">Adresse mail</label><br>
-    <input type="email" name="mail" id="mail" value="<?php if (isset($user['mail'])) {echo $user['mail'];} ?>"><br><br>
-    <label for="birth">Date de naissance</label><br>
-    <input type="date" name="birth" id="birth" value="<?php if(isset($user['date_of_birth'])){echo $user['date_of_birth'];} ?>"><br><br>
-    <label for="address">Adresse</label><br>
-    <input type="text" name="address" id="address"value="<?php if(isset($user['address'])){echo $user['address'];} ?>"><br><br>
-    <label for="details">Autres informations (bâtiment, appt, escaliers,...) <i>(facultatif)</i></label><br>
-    <input type="text" name="details" id="details" value="<?php if(isset($user['details'])){echo $user['details'];} ?>"><br><br>
-    <label for="postal_code">Code Postal</label><br>
-    <input type="number" name="postal_code" id="postal_code" value="<?php if(isset($user['postal_code'])){echo $user['postal_code'];}?>"><br><br>
-    <label for="city">Ville</label><br>
-    <input type="text" name="city" id="city" value="<?php if(isset($user['city'])){echo $user['city'];} ?>"><br><br>
-    <label for="country">Pays</label><br>
-    <input type="text" name="country" id="country" value="<?php if(isset($user['country'])){echo $user['country'];} ?>"><br><br>
-    <label for="phone">Phone</label><br>
-    <input type="number" name="phone" id="phone" value="<?php if(isset($user['phone'])){echo $user['phone'];} ?>"><br><br>
+    <label for="username">Pseudo</label>
+    <input type="text" name="username" id="username" value="<?php echo $user['username'];?>" disabled>
+    <label for="last_name">Nom</label>
+    <input type="text" name="last_name" id="last_name" value="<?php if (isset($user['last_name'])) {echo $user['last_name'];} ?>">
+    <label for="first_name">Prénom</label>
+    <input type="text" name="first_name" id="first_name" value="<?php if (isset($user['first_name'])) {echo $user['first_name'];} ?>">
+    <label for="mail">Adresse mail</label>
+    <input type="email" name="mail" id="mail" value="<?php if (isset($user['mail'])) {echo $user['mail'];} ?>">
+    <label for="birth">Date de naissance</label>
+    <input type="date" name="birth" id="birth" value="<?php if(isset($user['date_of_birth'])){echo $user['date_of_birth'];} ?>">
+    <label for="address">Adresse</label>
+    <input type="text" name="address" id="address"value="<?php if(isset($user['address'])){echo $user['address'];} ?>">
+    <label for="details">Autres informations (bâtiment, appt, escaliers,...) <i>(facultatif)</i></label>
+    <input type="text" name="details" id="details" value="<?php if(isset($user['details'])){echo $user['details'];} ?>">
+    <label for="postal_code">Code Postal</label>
+    <input type="number" name="postal_code" id="postal_code" value="<?php if(isset($user['postal_code'])){echo $user['postal_code'];}?>">
+    <label for="city">Ville</label>
+    <input type="text" name="city" id="city" value="<?php if(isset($user['city'])){echo $user['city'];} ?>">
+    <label for="country">Pays</label>
+    <input type="text" name="country" id="country" value="<?php if(isset($user['country'])){echo $user['country'];} ?>">
+    <label for="phone">Phone</label>
+    <input type="number" name="phone" id="phone" value="<?php if(isset($user['phone'])){echo $user['phone'];} ?>">
     <input type="submit" value="Modifier mes infos" name="sub_infos">
 </form>
-
+</div>
 <?php
 /**
  * Created by PhpStorm.
