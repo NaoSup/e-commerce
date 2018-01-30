@@ -20,7 +20,7 @@ $req = $db->query("SELECT * FROM user WHERE id_user = $id_seller");
 $seller = $req->fetch();
 ?>
 <div class="row">
-    <div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+    <div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2" style="text-align: center">
         <h3>Présentation du produit</h3>
         <img src="<?php echo $item['photo']; ?>" alt="" width="300">
         <h4><?php echo $item['name']; ?></h4>
