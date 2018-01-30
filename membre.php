@@ -17,7 +17,7 @@ include ('./includes/footer.html');
 <div class="menumembre col-xs-2 col-sm-2 col-md-2 col-lg-2">
 
 </div>
-<div class="content col-xs-10 col-sm-10 col-md-10 col-lg-10">
+<div class="content col-xs-10 col-sm-10 col-md-10 col-lg-10 " style="text-align: center ; margin: 0 auto">
     <h2>Bienvenue dans votre espace membre <a href="modif_membre.php">Modifier mes infos</a> </h2>
 <hr>
 <h3>Vos produits en ligne</h3>

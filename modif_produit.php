@@ -13,6 +13,7 @@ $req = $db->query("SELECT * FROM item WHERE id_item = $id_item");
 $item = $req->fetch();
 ?>
 
+<div class="form-style-10">
 <h3>Modifier votre photo d'annonce</h3>
 <form enctype="multipart/form-data" action="" method="post" >
     <?php
@@ -32,6 +33,7 @@ $item = $req->fetch();
     <input type="file" name="photo"><br><br>
     <input type="submit" value="Modifier la photo" name="sub_photo">
 </form>
+</div>
 <?php
 
 if(isset($_POST['sub_photo']) && !empty($_FILES['photo'])){
@@ -77,6 +79,7 @@ if(isset($_POST['sub_photo']) && !empty($_FILES['photo'])){
     }
 }
 ?>
+<div class="form-style-10">
 <h3>Modifier votre annonce</h3>
 <form action="" method="post" name="infos">
     <label for="name">Titre de l'annonce</label><br>
@@ -120,6 +123,7 @@ if(isset($_POST['sub_photo']) && !empty($_FILES['photo'])){
     <input type="date" name="purchase_date" id="purchase_date" value="<?php echo $item['purchase_date'];?>"><br>
     <input type="submit" value="Modifier mes infos" name="sub_infos">
 </form>
+</div>
 
 <?php
 /**
