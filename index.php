@@ -25,7 +25,7 @@ else{
 ?>
 
 <section id="benefit-fluid-6col-2row" class="pt-125 pb-125 text-center light">
-    <div class="container-fluid pad-x2">
+    <div id="cadre" class="container-fluid pad-x2">
         <div class="row">
 
                 <?php
@@ -39,7 +39,7 @@ else{
                 ?>
                     <div class="col-md-2">
                 <div class="card card-simple">
-                    <img src="<?php echo $item['photo'] ?>" alt="" width="200px" height="120px">
+                    <img id="image" src="<?php echo $item['photo'] ?>" alt="" width="200px" height="120px">
                     <h3><?php echo $item['name'] ?></h3>
                     <h4><?php echo $item['category'] ?></h4>
                     <p><?php echo $item['price'] ?>€</p>

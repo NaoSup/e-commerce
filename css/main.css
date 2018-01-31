@@ -39,10 +39,18 @@ main{
     font-size: 25px;
 }
 
+#cadre{
+    padding-top: 5%;
+    margin-left: 25%;
+    text-align: center;
+
+}
 
 
-
-
+#image{
+    padding-top: 10px;
+    margin-left: 25px;
+}
 
 
 
