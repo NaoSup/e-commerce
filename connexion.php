@@ -6,13 +6,13 @@ include('./includes/header.php');
 
 ?>
 
-
     <div class="form-style-10">
+<h1>Connexion</h1>
     <form action="" method="post">
     <label for="username">Pseudo</label>
-    <input type="text" name="username" id="username" placeholder="username"><br>
+    <input type="text" name="username" id="username"><br>
     <label for="username">Password</label>
-    <input type="password" name="password" id="password" placeholder="password"><br>
+    <input type="password" name="password" id="password"><br>
     <input type="submit" value="Valider">
 
 </form>
@@ -33,7 +33,7 @@ if ((isset($_POST)) && (!empty($_POST['username'])) && (!empty($_POST['password'
     if(count($result) > 0){
         $_SESSION["id"] = $result[0]["id_user"];
         //header location vers accueil ou page membre
-        echo "connecté";
+        header('Location:index.php');
     }
     else {
         echo "connexion impossible, veuillez réessayer";

@@ -10,12 +10,15 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/main2.css" />
 </head>
 <body>
 
 <main>
-<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark fixed-top" style="background: #0b0b0b">
-
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" >
+    <div class="navbar-header">
+        <a class="navbar-brand" href="#">ITech Area</a>
+    </div>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -23,7 +26,7 @@
 
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="index.php">Accueil <span class="sr-only">(current)</span></a>
             </li>
             <?php

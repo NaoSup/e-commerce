@@ -1,0 +1,25 @@
+main{
+    margin-top: 20vh;
+}
+.navbar {
+    background: #a103ad;
+}
+.navbar-nav .nav-link {
+    color: #fff;
+}
+.form-style-10 h1 {
+    background: #a103ad;
+    text-align: center;
+    letter-spacing: 3px;
+}
+.form-style-10 label {
+    margin-top:10px;
+    margin-bottom: 0;
+}
+.form-style-10 input[type="submit"] {
+    background: #a103ad;
+    border: none;
+}
+.form-style-10 input[type="submit"]:hover {
+    background: #90039a;
+}

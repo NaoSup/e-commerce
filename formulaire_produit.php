@@ -2,10 +2,6 @@
 session_start();
 require('./includes/init.php');
 include('./includes/header.php');
-
-?>
-
-<?php
 if(isset($_SESSION['id'])) {
     $id = $_SESSION['id'];
     $req = $db->query("SELECT * FROM user where id_user = $id");
@@ -63,7 +59,7 @@ if(isset($_SESSION['id'])) {
         <label for="username">purchase_date</label>
         <input type="date" name="purchase_date" id="purchase_date">
         <input type="file" name="photo">
-
+        <br><br>
         <input type="submit" content="Publier l'annonce">
     </form>
 </div>
@@ -118,8 +114,8 @@ if(isset($_SESSION['id'])) {
                         ':seller' => $_SESSION['id'],
                         ':photo' => $new_path
                     ]);
-                    print_r($request->errorInfo());
-                    echo "annonce publiée !";
+                    //print_r($request->errorInfo());
+                    echo "annonce publiée !". "<br><br>";
                 }
             }
         }

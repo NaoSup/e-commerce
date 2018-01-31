@@ -2,11 +2,6 @@
 session_start();
 require('./includes/init.php');
 include('./includes/header.php');
-
-?>
-
-
-<?php
 $id = $_SESSION['id'];
 $req = $db->query("SELECT * FROM user WHERE id_user = $id");
 $user = $req->fetch();
@@ -31,7 +26,7 @@ $user = $req->fetch();
     <input type="file" name="photo"><br><br>
     <input type="submit" value="Modifier ma photo" name="sub_photo">
 </form>
-</div>
+
 <?php
 
     if(isset($_POST['sub_photo']) && !empty($_FILES['photo'])){
@@ -77,51 +72,38 @@ $user = $req->fetch();
         }
     }
 ?>
+</div>
 <div class="form-style-10">
 <h1>Modifier vos informations personnelles</h1>
 <form action="" method="post" name="infos">
     <label for="username">Pseudo</label>
     <input type="text" name="username" id="username" value="<?php echo $user['username'];?>" disabled>
-    <label for="last_name">Nom</label>
+    <label for="last_name">Nom*</label>
     <input type="text" name="last_name" id="last_name" value="<?php if (isset($user['last_name'])) {echo $user['last_name'];} ?>">
-    <label for="first_name">Prénom</label>
+    <label for="first_name">Prénom*</label>
     <input type="text" name="first_name" id="first_name" value="<?php if (isset($user['first_name'])) {echo $user['first_name'];} ?>">
-    <label for="mail">Adresse mail</label>
+    <label for="mail">Adresse mail*</label>
     <input type="email" name="mail" id="mail" value="<?php if (isset($user['mail'])) {echo $user['mail'];} ?>">
-    <label for="birth">Date de naissance</label>
+    <label for="birth">Date de naissance*</label>
     <input type="date" name="birth" id="birth" value="<?php if(isset($user['date_of_birth'])){echo $user['date_of_birth'];} ?>">
-    <label for="address">Adresse</label>
+    <label for="address">Adresse*</label>
     <input type="text" name="address" id="address"value="<?php if(isset($user['address'])){echo $user['address'];} ?>">
     <label for="details">Autres informations (bâtiment, appt, escaliers,...) <i>(facultatif)</i></label>
     <input type="text" name="details" id="details" value="<?php if(isset($user['details'])){echo $user['details'];} ?>">
-    <label for="postal_code">Code Postal</label>
+    <label for="postal_code">Code Postal*</label>
     <input type="number" name="postal_code" id="postal_code" value="<?php if(isset($user['postal_code'])){echo $user['postal_code'];}?>">
-    <label for="city">Ville</label>
+    <label for="city">Ville*</label>
     <input type="text" name="city" id="city" value="<?php if(isset($user['city'])){echo $user['city'];} ?>">
-    <label for="country">Pays</label>
+    <label for="country">Pays*</label>
     <input type="text" name="country" id="country" value="<?php if(isset($user['country'])){echo $user['country'];} ?>">
-    <label for="phone">Phone</label>
+    <label for="phone">Phone*</label>
     <input type="number" name="phone" id="phone" value="<?php if(isset($user['phone'])){echo $user['phone'];} ?>">
     <input type="submit" value="Modifier mes infos" name="sub_infos">
 </form>
-</div>
 <?php
-/**
- * Created by PhpStorm.
- * User: npaul
- * Date: 10/01/2018
- * Time: 21:10
- */
-//on convertit la date pour la mettre au format de la bdd
-/*$array = explode("-", $_POST['birth']);
-$day = $array[0];
-$month = $array[1];
-$year = $array['2'];
-$date = $year . "-" . $month . "-" . $day;*/
 if((isset($_POST['sub_infos'])) && (!empty($_POST['last_name'])) && (!empty($_POST['first_name']))
     && (!empty($_POST['mail'])) && (!empty($_POST['birth'])) && (!empty($_POST['address'])) && (!empty($_POST['postal_code']))
     && (!empty($_POST['city'])) && (!empty($_POST['country'])) && (!empty($_POST['phone']))) {
-    echo "test";
     $request = $db->prepare("UPDATE user SET last_name = :last_name, first_name = :first_name, mail = :mail, date_of_birth = :birth, address = :address, details = :details, postal_code = :postal_code, city = :city, country = :country, phone = :phone WHERE id_user = $id");
     $request->execute([
         ':last_name' => $_POST['last_name'],
@@ -135,12 +117,15 @@ if((isset($_POST['sub_infos'])) && (!empty($_POST['last_name'])) && (!empty($_PO
         ':country' => $_POST['country'],
         ':phone' => $_POST['phone']
     ]);
-    print_r($request->errorInfo());
-    echo "Vos mises à jour ont été prise en compte";
+    //print_r($request->errorInfo());
+    echo "Vos mises à jour ont été prise en compte" . "<br><br>";
+}
+else {
+    echo "Veuillez remplir tous les champs" . "<br><br>";
 }
 ?>
-<a href="supp_membre.php">Supprimer mon compte</a> <span>Attention ! Cette action est irréversible.</span>
-
+<a href="supp_membre.php">Supprimer mon compte</a> <i>Attention ! Cette action est irréversible.</i>
+</div>
 
 <?php
 include ('./includes/footer.html');
