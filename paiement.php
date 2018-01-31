@@ -2,8 +2,7 @@
 session_start();
 require('./includes/init.php');
 $id_user = $_SESSION['id'];
-include('./includes/header.html');
-include ('./includes/footer.html');
+include('./includes/header.php');
 
 ?>
 
@@ -97,3 +96,5 @@ include ('./includes/footer.html');
         header('Location:cart.php');
     }
 
+include ('./includes/footer.html');
+?>

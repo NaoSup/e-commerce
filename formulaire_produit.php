@@ -1,17 +1,15 @@
 <?php
 session_start();
 require('./includes/init.php');
-include('./includes/header.html');
-include ('./includes/footer.html');
-
+include('./includes/header.php');
 
 ?>
 
 <?php
-$id = $_SESSION['id'];
-$req = $db->query("SELECT * FROM user where id_user = $id");
-$user = $req->fetch();
 if(isset($_SESSION['id'])) {
+    $id = $_SESSION['id'];
+    $req = $db->query("SELECT * FROM user where id_user = $id");
+    $user = $req->fetch();
     if((!empty($user['date_of_birth'])) && (!empty($user['address']))
     && (!empty($user['postal_code'])) && (!empty($user['city'])) && (!empty($user['country']))
     && (!empty($user['phone']))) {
@@ -65,16 +63,7 @@ if(isset($_SESSION['id'])) {
         <label for="username">purchase_date</label>
         <input type="date" name="purchase_date" id="purchase_date">
         <input type="file" name="photo">
-        <!--<label for="delivery">Mode de livraison</label><br>
-        <select name="delivery" id="delivery">
-            <option value="">Envoi par lettre suivi</option>
-            <option value="">Envoi par lettre recommandée avec demande d'avis de réception  R1</option>
-            <option value="">Envoi par lettre recommandée avec demande d'avis de réception  R2</option>
-            <option value="">Envoi par lettre recommandée avec demande d'avis de réception  R3</option>
-            <option value="">Chronopost</option>
-            <option value="">Colissimo</option>
-            <option value="">Remise en mains propres</option>
-        </select><br><br>-->
+
         <input type="submit" content="Publier l'annonce">
     </form>
 </div>
@@ -146,12 +135,12 @@ else {
 }
 }
 else {
-        header('Location: connexion.php');
+        header('Location:connexion.php');
     }
 
+include ('./includes/footer.html');
 
 ?>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
 </body>
 </html>

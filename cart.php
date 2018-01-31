@@ -1,8 +1,7 @@
 <?php
 session_start();
 require('./includes/init.php');
-include('./includes/header.html');
-include ('./includes/footer.html');
+include('./includes/header.php');
 ?>
 
 
@@ -34,4 +33,5 @@ if(isset($_SESSION['cart'])){
 }
 
 
-
+include ('./includes/footer.html');
+?>

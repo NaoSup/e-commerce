@@ -1,2 +1,0 @@
-$password = crypt($_POST['password'], '$2a$07$azds8dfbn2ff54gfhjkelqa$');
-Soit crypt(mot_de_passe_à_crypter, '$2a$07$suite_de_caractères_aléatoires$')

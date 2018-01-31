@@ -7,8 +7,7 @@ if(!isset($_SESSION['id'])){
 else{
     $id = $_SESSION['id'];
 }
-include('./includes/header.html');
-include ('./includes/footer.html');
+include('./includes/header.php');
 
 ?>
 
@@ -18,7 +17,7 @@ include ('./includes/footer.html');
 
 </div>
 <div class="content col-xs-10 col-sm-10 col-md-10 col-lg-10 " style="text-align: center ; margin: 0 auto">
-    <h2>Bienvenue dans votre espace membre <a href="modif_membre.php">Modifier mes infos</a> </h2>
+    <h2>Bienvenue dans votre espace membre  </h2> <a href="modif_membre.php">Modifier mes infos</a>
 <hr>
 <h3>Vos produits en ligne</h3>
 <?php
@@ -196,14 +195,8 @@ if (!empty($items)) {
     ?>
     <i>Cette section est vide.</i>
     <?php
-}
-
-?>
+}?>
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-        crossorigin="anonymous"></script>
-</body>
-</html>
-
+<?php
+include ('./includes/footer.html');
+?>

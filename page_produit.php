@@ -4,8 +4,7 @@ require('./includes/init.php');
 /*$_SESSION['cart'] = array();
 $_SESSION['cart']['id_item'] = array();
 $_SESSION['cart']['price'] = array();*/
-include('./includes/header.html');
-include ('./includes/footer.html');
+include('./includes/header.php');
 
 ?>
 
@@ -83,3 +82,7 @@ $seller = $req->fetch();
         ?>
     </div>
 </div>
+
+<?php
+include ('./includes/footer.html');
+?>

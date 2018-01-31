@@ -1,9 +1,7 @@
 <?php
 session_start();
 require('./includes/init.php');
-include('./includes/header.html');
-include ('./includes/footer.html');
-
+include('./includes/header.php');
 
 ?>
 
@@ -45,5 +43,5 @@ $sending = $request->execute([
     ':company' => $_POST['company']
 ]);
 
-
+include ('./includes/footer.html');
 ?>

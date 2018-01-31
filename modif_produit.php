@@ -1,8 +1,7 @@
 <?php
 session_start();
 require('./includes/init.php');
-include('./includes/header.html');
-include ('./includes/footer.html');
+include('./includes/header.php');
 
 ?>
 
@@ -160,3 +159,7 @@ if((isset($_POST['sub_infos'])) && (!empty($_POST['last_name'])) && (!empty($_PO
 }
 ?>
 <a href="supp_produit.php?id_item=<?php echo $item['id_item'];?>">Supprimer cette annonce</a> <span>Attention ! Cette action est irréversible.</span>
+
+<?php
+include ('./includes/footer.html');
+?>
