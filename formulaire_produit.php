@@ -19,11 +19,11 @@ if(isset($_SESSION['id'])) {
 <div class="form-style-10">
     <h1>Ajouter un produit</h1>
     <form enctype="multipart/form-data" action="" method="post">
-        <label for="name">Titre</label><br>
+        <label for="name">Titre</label>
         <input type="text" name="name" id="name" value="<?php if (isset($_POST['name'])) {
             echo $_POST['name'];
         } ?>"><br>
-        <label for="category">Catégorie</label><br>
+        <label for="category">Catégorie</label>
         <select name="category" id="category">
             <optgroup label="Jeux">
                 <option value="ps4">PS4</option>
@@ -35,36 +35,36 @@ if(isset($_SESSION['id'])) {
                 <option value="pc">PC</option>
                 <option value="autres">Autres</option>
             </optgroup>
-        </select><br>
-        <label for="brand">Marque/Editeur</label><br>
+        </select>
+        <label for="brand">Marque/Editeur</label>
         <input type="text" name="brand" id="brand" value="<?php if (isset($_POST['brand'])) {
             echo $_POST['brand'];
-        } ?>"><br>
-        <label for="price">Prix (en euros)</label><br>
+        } ?>">
+        <label for="price">Prix (en euros)</label>
         <input type="text" name="price" id="price" value="<?php if (isset($_POST['price'])) {
             echo $_POST['price'];
-        } ?>"><br>
-        <label for="status">Etat</label><br>
+        } ?>">
+        <label for="status">Etat</label>
         <select name="status" id="status">
             <option value="Neuf" selected>Neuf</option>
             <option value="TresBonEtat">Très Bon Etat</option>
             <option value="BonEtat">Bon Etat</option>
             <option value="Use">Usé</option>
             <option value="TresUse">Très Usé</option>
-        </select><br>
-        <label for="description">Description</label><br>
+        </select>
+        <label for="description">Description</label>
         <textarea name="description" id="description" cols="30" rows="10"><?php if (isset($_POST['description'])) {
                 echo $_POST['description'];
-            } ?></textarea><br>
-        <label for="receipt">Reçu</label><br>
+            } ?></textarea>
+        <label for="receipt">Reçu</label>
         <input type="radio" name="receipt" value="Oui">Oui
-        <input type="radio" name="receipt" value="Non">Non <br>
-        <label for="warrantly">Garantie</label><br>
+        <input type="radio" name="receipt" value="Non">Non
+        <label for="warrantly">Garantie</label>
         <input type="radio" name="warrantly" value="Oui">Oui
-        <input type="radio" name="warrantly" value="Non">Non <br>
-        <label for="username">purchase_date</label><br>
-        <input type="date" name="purchase_date" id="purchase_date"><br>
-        <input type="file" name="photo"><br>
+        <input type="radio" name="warrantly" value="Non">Non
+        <label for="username">purchase_date</label>
+        <input type="date" name="purchase_date" id="purchase_date">
+        <input type="file" name="photo">
         <!--<label for="delivery">Mode de livraison</label><br>
         <select name="delivery" id="delivery">
             <option value="">Envoi par lettre suivi</option>

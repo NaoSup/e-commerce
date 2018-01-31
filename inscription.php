@@ -8,30 +8,30 @@ include('./includes/header.html');
 <div class="form-style-10">
 <h1>Inscription</h1>
     <form action="" method="post">
-        <label for="username">Pseudo</label><br>
+        <label for="username">Pseudo</label>
         <input type="text" name="username" id="username" value="<?php if (isset($_POST['username'])) {
             echo $_POST['username'];
-        } ?>"><br>
-        <label for="last_name">Nom</label><br>
+        } ?>">
+        <label for="last_name">Nom</label>
         <input type="text" name="last_name" id="last_name" value="<?php if (isset($_POST['last_name'])) {
             echo $_POST['last_name'];
-        } ?>"><br>
-        <label for="first_name">Prénom</label><br>
+        } ?>">
+        <label for="first_name">Prénom</label>
         <input type="text" name="first_name" id="first_name" value="<?php if (isset($_POST['first_name'])) {
             echo $_POST['first_name'];
-        } ?>"><br>
-        <label for="mail">Adresse mail</label><br>
+        } ?>">
+        <label for="mail">Adresse mail</label>
         <input type="email" name="mail" id="mail" value="<?php if (isset($_POST['mail'])) {
             echo $_POST['mail'];
-        } ?>"><br>
-        <label for="mail2">Confirmation de l'adresse mail</label><br>
+        } ?>">
+        <label for="mail2">Confirmation de l'adresse mail</label>
         <input type="email" name="mail2" id="mail2" value="<?php if (isset($_POST['mail2'])) {
             echo $_POST['mail2'];
-        } ?>"><br>
-        <label for="password">Mot de passe</label><br>
-        <input type="password" name="password" id="password"><br>
-        <label for="password2">Confirmation mot de passe</label><br>
-        <input type="password" name="password2" id="password2"><br>
+        } ?>">
+        <label for="password">Mot de passe</label>
+        <input type="password" name="password" id="password">
+        <label for="password2">Confirmation mot de passe</label>
+        <input type="password" name="password2" id="password2">
 
         <input type="submit" content="S'inscrire">
     </form>
