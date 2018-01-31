@@ -6,7 +6,7 @@ include('./includes/header.php');
 
 ?>
 
-<h1 style="margin-left: 46%">Itech Area</h1>
+<h1 id="titre" style="margin-left: 46%">Itech Area</h1>
 
 
 <?php
@@ -16,7 +16,9 @@ if (isset($_SESSION['id'])){
 }
 else{
     ?>
-    <p>Vous n'avez pas de compte chez ITECH AREA, alors qu'attendez vous pour vous inscrire? Allez cliquer ici <a href="inscription.php">Inscription</a></p>
+    <div id="acceuil" >
+        <p>Vous n'avez pas de compte chez ITECH AREA, alors qu'attendez vous pour vous inscrire? Allez cliquer ici </p><a id="inscription" href="inscription.php"> > Inscription < </a>
+    </div>
 
     <?php
 }

@@ -16,8 +16,40 @@ main{
     margin: 0 auto;
 }
 .bas{
-    height: 20vh;
+    height: 10vh;
 }
+
+#titre{
+    padding-top: 80px;
+    font-family: Arial;
+}
+
+#acceuil{
+    width: 100%;
+    padding: 20px 0 15px;
+    text-align: center;
+    background-color: #a103ad;
+    color: white;
+}
+
+#inscription{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 #footer {
     position:absolute;
     font-size: inherit;
