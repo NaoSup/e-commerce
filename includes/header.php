@@ -18,7 +18,7 @@
 <main>
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top" >
     <div class="navbar-header">
-        <a class="navbar-brand" href="#">ITech Area</a>
+        <a class="navbar-brand" href="index.php">ITech Area</a>
     </div>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
