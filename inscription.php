@@ -34,8 +34,7 @@ include('./includes/header.php');
         <input type="password" name="password2" id="password2">
 
         <input type="submit" content="S'inscrire">
-    </form>
-</div>
+
 <?php
 //Vérification que les champs obligatoires sont bien remplis
 if ((isset($_POST)) && (!empty($_POST['username'])) && (!empty($_POST['last_name'])) && (!empty($_POST['first_name']))
@@ -61,9 +60,11 @@ if ((isset($_POST)) && (!empty($_POST['username'])) && (!empty($_POST['last_name
                 ':password' => $password,
             ]);
             //print_r($request->errorInfo());
-            echo "Inscrit";
+           // echo "Inscrit";
+
             ?>
-            <p>Vous pouvez vous <a href="connexion.php">connecter</a>.</p>
+
+            <p id="msg">Merci pour votre inscription sur notre site <br> Vous pouvez vous maintenant vous <a href="connexion.php">connecter</a>.</p>
             <?php
             //Redirection (header) vers l'index à rajouter une fois créé
         }
@@ -71,7 +72,8 @@ if ((isset($_POST)) && (!empty($_POST['username'])) && (!empty($_POST['last_name
 }
 
 ?>
-<div class=""></div>
+    </form>
+</div>
 <?php
 include ('./includes/footer.html');
 ?>

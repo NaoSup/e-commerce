@@ -124,7 +124,7 @@ if(isset($_SESSION['id'])) {
 else {
     echo "";
     ?>
-    <p>
+    <p id="membre">
         Pour pouvoir ajouter une annonce, veuillez <a href="modif_membre.php">remplir votre profil</a>.
     </p>
     <?php

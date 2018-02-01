@@ -22,7 +22,7 @@ main{
 
 
 
-#acceuil{
+.accueil{
     width: 100%;
     padding: 20px 0 15px;
     text-align: center;
@@ -52,13 +52,26 @@ main{
 
 
 
+#commande{
+    margin-left: 45%;
+    padding-top: 15%;
+}
 
+#msg{
+    margin-left:  0;
+    padding-bottom: 5px;
+    padding-top: 15px;
+}
 
+#membre{
+    margin-left: 35%;
+    padding-top: 10%;
+    font-size: 20px;
+}
 
 
 #footer {
     position:absolute;
-
     font-size: inherit;
     font-family: Arial;
     text-align: center;

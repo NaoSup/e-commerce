@@ -27,7 +27,7 @@ if(isset($_SESSION['cart'])){
         echo $total;
     ?>
     €</p>
-    <a href="paiement.php"><button>Commander</button></a>
+    <a id="commande" href="paiement.php"><button>Commander</button></a>
     </div>
 <?php
 }
