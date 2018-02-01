@@ -55,3 +55,26 @@ main{
 .produit p{
     font-size: 24px;
 }
+.panier table {
+    text-align: center;
+}
+.panier table tr td p, .recap table tr td p {
+    font-size: 24px;
+    font-weight: bold;
+}
+#commande {
+    background: #a103ad;
+    border: none;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    padding: 5px;
+    margin: auto;
+    width: 160px;
+    text-align: center;
+}
+#commande a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+}

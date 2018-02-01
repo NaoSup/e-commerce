@@ -10,26 +10,40 @@ include('./includes/header.php');
 
 <div class="recap">
     <h3>Récapitulatif de votre commande</h3>
-    <?php
-    //var_dump($_SESSION['cart']);
-    if(isset($_SESSION['cart'])) {
-        $cart = $_SESSION['cart'];
-        foreach ($cart as $items) {
-            foreach ($items as $item) {
-                $id = $item[0];
+    <table class="table table-striped table-hover">
+        <tr>
+            <td><b>Produit</b></td>
+            <td><b>Prix</b></td>
+        </tr>
+        <?php
+        //var_dump($_SESSION['cart']);
+        if(isset($_SESSION['cart'])) {
+            $cart = $_SESSION['cart'];
+            foreach ($cart as $item) {
+                $id = $item;
                 $rq = $db->query("SELECT * FROM item WHERE id_item = $id");
                 $product = $rq->fetch();
-                echo $product['name'] . "<br>";
-                echo $product['price'] . "<br>";
+                ?>
+                <tr>
+                    <td>
+                        <?php echo $product['name']; ?>
+                    </td>
+                    <td>
+                        <?php echo $product['price'] . "€"; ?>
+                    </td>
+                </tr>
+                <?php
             }
         }
         ?>
-        <p>TOTAL :
-            <?php
-            $total = array_sum($_SESSION['cart']['price']);
-            echo $total;
-            ?>
-            €</p>
+        <tr>
+            <td></td>
+            <td>
+                <p>TOTAL : <?php echo $_SESSION['total']; ?>€</p>
+            </td>
+        </tr>
+
+    </table>
         <h3>Récapitulatif de vos coordonnées</h3>
         <?php
         $id = $_SESSION['id'];
@@ -51,50 +65,46 @@ include('./includes/header.php');
             <form action="" method="post">
                 <label for="cardnumber">Numéro de carte bancaire :</label><br>
                 <input type="number" name="cardnumber"><br>
-                <input type="submit" value="Payer" name="submit">
+                <input type="submit" value="Payer" name="pay">
             </form>
         </div>
 <?php
-        if(isset($_POST['submit'])){
-            if(isset($user['address']) && isset($user['postal_code']) && isset($user['city']) && isset($user['country']) && isset($user['phone'])){
-            $number= $_POST['cardnumber'];
+        if(isset($_POST['pay'])){
+            if(isset($user['address']) && isset($user['postal_code']) && isset($user['city']) && isset($user['country']) && isset($user['phone'])) {
+                $number = $_POST['cardnumber'];
 
-            $cardtype = array(
-                "visa"       => "/^4[0-9]{12}(?:[0-9]{3})?$/",
-                "mastercard" => "/^5[1-5][0-9]{14}$/",
-                "amex"       => "/^3[47][0-9]{13}$/",
-            );
+                $cardtype = array(
+                    "visa" => "/^4[0-9]{12}(?:[0-9]{3})?$/",
+                    "mastercard" => "/^5[1-5][0-9]{14}$/",
+                    "amex" => "/^3[47][0-9]{13}$/",
+                );
 
-            if (preg_match($cardtype['visa'],$number) || (preg_match($cardtype['mastercard'],$number)) || (preg_match($cardtype['amex'],$number))) {
-                foreach ($cart as $items) {
-                    foreach ($items as $item) {
-                        $id = $item[0];
-                        $rq = $db->prepare("UPDATE item SET id_buyer=:id_buyer, sell_date= NOW() WHERE id_item");
+                if (preg_match($cardtype['visa'], $number) || (preg_match($cardtype['mastercard'], $number)) || (preg_match($cardtype['amex'], $number))) {
+                    $cart = $_SESSION['cart'];
+                    echo $_SESSION['cart'];                    foreach ($cart as $item) {
+                        $id = $item;
+                        $rq = $db->prepare("UPDATE item SET id_buyer=:id_buyer, sell_date= NOW() WHERE id_item = $id");
                         $rq->execute([
                             ':id_buyer' => $_SESSION['id']
                         ]);
                     }
+                    echo "Paiement confirmé !";
+                    $_SESSION['cart'] = NULL;
+                    ?>
+                    <a href="index.php">Retour vers l'accueil</a>
+                    <a href="membre.php">Voir ma page membre</a>
+                    <?php
+                } else {
+                    echo "Numéro de carte invalide";
                 }
-                echo "Paiement confirmé !";
-                $_SESSION['cart'] = NULL;
-                var_dump($_SESSION['cart']);
             }
-            else
-            {
-                echo "Numéro de carte invalide";
-            }
-        }
-        else {
+            else {
                 ?>
-            <p>Pour pouvoir procéder au paiement, vous devez remplir vos coordonnées dans votre <a href="modif_membre.php">espace membre</a>.</p>
+                    <p>Pour pouvoir procéder au paiement, vous devez remplir vos coordonnées dans votre <a href="modif_membre.php">espace membre</a>.</p>
 <?php
             }
         }
 
-    }
-    else {
-        header('Location:cart.php');
-    }
 
 include ('./includes/footer.html');
 ?>

@@ -66,16 +66,13 @@ $seller = $req->fetch();
                 if(isset($_POST['cart'])){
                     if(!isset($_SESSION['cart'])){
                         $_SESSION['cart'] = array();
-                        $_SESSION['cart']['id_item'] = array();
-                        $_SESSION['cart']['price'] = array();
                     }
-                    if(in_array($item['id_item'],$_SESSION['cart']['id_item'])){
+                    if(in_array($item['id_item'],$_SESSION['cart'])){
                         echo "Ce produit a déjà été ajouté à votre panier.";
                     }
                     else{
-                        echo "ok";
-                        array_push($_SESSION['cart']['id_item'], $item['id_item']);
-                        array_push($_SESSION['cart']['price'], $item['price']);
+                        echo "Produit ajouté au panier";
+                        array_push($_SESSION['cart'], $item['id_item']);
                     }
                 }
             }
