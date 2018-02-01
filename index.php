@@ -6,7 +6,6 @@ include('./includes/header.php');
 
 ?>
 
-<h1 id="titre" style="margin-left: 46%">Itech Area</h1>
 
 
 <?php
@@ -39,7 +38,7 @@ else{
                 ?>
                     <div class="col-md-2">
                 <div class="card card-simple">
-                    <img id="image" src="<?php echo $item['photo'] ?>" alt="" width="200px" height="120px">
+                    <img id="image" src="<?php echo $item['photo'] ?>" alt="" width="200px" height= auto>
                     <h3><?php echo $item['name'] ?></h3>
                     <h4><?php echo $item['category'] ?></h4>
                     <p><?php echo $item['price'] ?>€</p>
