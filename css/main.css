@@ -21,13 +21,10 @@ main{
 }
 
 
-
 .accueil{
     width: 100%;
     padding: 20px 0 15px;
     text-align: center;
-    background-color: #a103ad;
-    color: white;
 }
 
 #inscription{
@@ -69,6 +66,47 @@ main{
     font-size: 20px;
 }
 
+#info{
+    margin-left: 10%;
+}
+
+#tableau1{
+    padding: 5px;
+    margin-left: 20%;
+    margin-right: 15%;
+}
+
+.recap{
+    width: 100%;
+    background-color: white;
+    padding: 25px;
+    height: 15%;
+}
+
+.recap #tableau2{
+    position: relative;
+    width: 30%;
+    height: 40%;
+    margin-left: 55%;
+}
+
+.recap #coordonnee{
+    position: relative;
+    width: 40%;
+}
+
+#payer{
+    background-color: #a103ad ;
+    width: 160px;
+    text-align: center;
+    color: white;
+    border-radius: 5px;
+}
+
+.paiement{
+    padding:  5%;
+    margin-left: 35%;
+}
 
 #footer {
     position:absolute;

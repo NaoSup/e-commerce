@@ -11,11 +11,15 @@ $total = array();
     <div class="accueil">
         <h2>Panier</h2>
     </div>
-    <table class="table table-striped table-hover">
-        <tr>
-            <td><b>Produit</b></td>
-            <td><b>Prix</b></td>
-        </tr>
+
+        <div id="tableau1">
+            <table class="table table-striped table-hover">
+            <tr>
+                <td><b>Produit</b></td>
+                <td><b>Prix</b></td>
+            </tr>
+
+
 <?php
 //var_dump($_SESSION['cart']);
 if(isset($_SESSION['cart'])) {
@@ -53,6 +57,10 @@ if(isset($_SESSION['cart'])) {
         </tr>
 
     </table>
+
+        </div>
+
+
     <div id="commande">
         <a href="paiement.php">Commander</a>
     </div>

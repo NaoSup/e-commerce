@@ -9,7 +9,9 @@ include('./includes/header.php');
 
 
 <div class="recap">
-    <h3>Récapitulatif de votre commande</h3>
+
+   <div id="tableau2">
+       <h3>Récapitulatif de votre commande</h3>
     <table class="table table-striped table-hover">
         <tr>
             <td><b>Produit</b></td>
@@ -42,8 +44,10 @@ include('./includes/header.php');
                 <p>TOTAL : <?php echo $_SESSION['total']; ?>€</p>
             </td>
         </tr>
-
     </table>
+   </div>
+
+    <div id="coordonnee">
         <h3>Récapitulatif de vos coordonnées</h3>
         <?php
         $id = $_SESSION['id'];
@@ -59,13 +63,15 @@ include('./includes/header.php');
     echo "Pays : ".$user['country'] . "<br>";
     echo "Téléphone : ".$user['phone'] . "<br>";
         ?>
-        </div>
+    </div>
+</div>
+
         <div class="paiement">
             <h3>Paiement</h3>
             <form action="" method="post">
                 <label for="cardnumber">Numéro de carte bancaire :</label><br>
-                <input type="number" name="cardnumber"><br>
-                <input type="submit" value="Payer" name="pay">
+                <input type="number" name="cardnumber"> <br><br>
+                <input id="payer" type="submit" value="Payer" name="pay">
             </form>
         </div>
 <?php

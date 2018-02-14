@@ -76,6 +76,7 @@ $user = $req->fetch();
 <div class="form-style-10">
 <h1>Modifier vos informations personnelles</h1>
 <form action="" method="post" name="infos">
+    <div id="info"><p>Vous devez imperativement remplir tous les champs </p></div>
     <label for="username">Pseudo</label>
     <input type="text" name="username" id="username" value="<?php echo $user['username'];?>" disabled>
     <label for="last_name">Nom*</label>
@@ -98,7 +99,7 @@ $user = $req->fetch();
     <input type="text" name="country" id="country" value="<?php if(isset($user['country'])){echo $user['country'];} ?>">
     <label for="phone">Phone*</label>
     <input type="number" name="phone" id="phone" value="<?php if(isset($user['phone'])){echo $user['phone'];} ?>">
-    <input type="submit" value="Modifier mes infos" name="sub_infos">
+    <input type="submit" value="Confirmer mes modifications" name="sub_infos">
 </form>
 <?php
 if((isset($_POST['sub_infos'])) && (!empty($_POST['last_name'])) && (!empty($_POST['first_name']))
