@@ -52,10 +52,10 @@ if(isset($_SESSION['id'])) {
         <label for="receipt">Reçu</label>
         <input type="radio" name="receipt" value="Oui">Oui
         <input type="radio" name="receipt" value="Non">Non
-        <label for="warrantly">Garantie</label>
-        <input type="radio" name="warrantly" value="Oui">Oui
-        <input type="radio" name="warrantly" value="Non">Non
-        <label for="username">purchase_date</label>
+        <label for="warranty">Garantie</label>
+        <input type="radio" name="warranty" value="Oui">Oui
+        <input type="radio" name="warranty" value="Non">Non
+        <label for="username">Date d'achat</label>
         <input type="date" name="purchase_date" id="purchase_date">
         <input type="file" name="photo">
         <br><br>
@@ -65,10 +65,16 @@ if(isset($_SESSION['id'])) {
     <?php
     if ((isset($_POST)) && (!empty($_POST['name'])) && (!empty($_POST['category'])) && (!empty($_POST['brand']))
         && (!empty($_POST['price'])) && (!empty($_POST['status'])) && (!empty($_POST['description']))
-        && (!empty($_POST['receipt'])) && (!empty($_POST['warrantly'])) && (!empty($_FILES['photo']))
+        && (!empty($_POST['receipt'])) && (!empty($_POST['warranty'])) && (!empty($_FILES['photo']))
     ) {
+        if(empty($_POST['purchase_date'])){
+            $date = NULL;
+        }
+        else {
+            $date = $_POST['purchase_date'];
+        }
         $directory = 'img/';
-        $extensions = array('png', 'jpeg', 'jpg'); //extension autorisé pour les images.
+        $extensions = array('png', 'jpeg', 'jpg', 'JPG'); //extension autorisé pour les images.
         $mimes = array('image/png', 'image/jpeg'); //extension autorisé pour les images
 
         // Vérifier le typemime du fichier qui sera uploadé
@@ -98,8 +104,8 @@ if(isset($_SESSION['id'])) {
                     $new_path = $directory . $finalname;
                     move_uploaded_file($old_path, $new_path);
 
-                    $request = $db->prepare("INSERT INTO item (name, date, category, brand, price, status, description, receipt, warrantly, purchase_date, id_seller, photo) VALUES (:name, NOW(), :category, :brand, :price, :status, :description,
-    :receipt, :warrantly, :purchase_date, :seller, :photo)");
+                    $request = $db->prepare("INSERT INTO item (name, date, category, brand, price, status, description, receipt, warranty, purchase_date, id_seller, photo) VALUES (:name, NOW(), :category, :brand, :price, :status, :description,
+    :receipt, :warranty, :purchase_date, :seller, :photo)");
                     $request->execute([
                         ':name' => $_POST['name'],
                         ':category' => $_POST['category'],
@@ -108,12 +114,11 @@ if(isset($_SESSION['id'])) {
                         ':status' => $_POST['status'],
                         ':description' => $_POST['description'],
                         ':receipt' => $_POST['receipt'],
-                        ':warrantly' => $_POST['warrantly'],
-                        ':purchase_date' => $_POST['purchase_date'],
+                        ':warranty' => $_POST['warranty'],
+                        ':purchase_date' => $date,
                         ':seller' => $_SESSION['id'],
                         ':photo' => $new_path
                     ]);
-                    //print_r($request->errorInfo());
                     echo "annonce publiée !". "<br><br>";
                 }
             }

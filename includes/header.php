@@ -10,8 +10,7 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/main.css" />
-    <link rel="stylesheet" href="./css/main2.css" />
-    <link rel="stylesheet" href="./css/smart.css" type="text/css" media="only screen and (max-width:768px)"/>
+    <link rel="stylesheet" href="./css/smart.css" type="text/css" media="only screen and (max-width:800px)"/>
 </head>
 <body>
 

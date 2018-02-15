@@ -81,80 +81,63 @@ if(isset($_POST['sub_photo']) && !empty($_FILES['photo'])){
 <div class="form-style-10">
 <h3>Modifier votre annonce</h3>
 <form action="" method="post" name="infos">
-    <label for="name">Titre de l'annonce</label><br>
+    <label for="name">Titre de l'annonce</label>
     <input type="text" name="name" id="name" value="<?php if (isset($item['name'])) {echo $item['name'];} ?>"><br><br>
-    <label for="category">Catégorie</label><br>
+    <label for="category">Catégorie</label>
     <select name="category" id="category">
         <optgroup label="Jeux">
-            <option value="ps4" selected="<?php if($item['category'] == "ps4"){echo "selected";} ?>">PS4</option>
-            <option value="ps3" selected="<?php if($item['category'] == "ps3"){echo "selected";} ?>">PS3</option>
-            <option value="xbox one" selected="<?php if($item['category'] == "xbox one"){echo "selected";} ?>">Xbox One</option>
-            <option value="xbox 360" selected="<?php if($item['category'] == "xbox 360"){echo "selected";} ?>">Xbox 360</option>
-            <option value="switch" selected="<?php if($item['category'] == "switch"){echo "selected";} ?>">Switch</option>
-            <option value="3DS-2DS" selected="<?php if($item['category'] == "3DS-2DS"){echo "selected";} ?>">3DS/2DS</option>
-            <option value="pc" selected="<?php if($item['category'] == "pc"){echo "selected";} ?>">PC</option>
-            <option value="autres" selected="<?php if($item['category'] == "autres"){echo "selected";} ?>">Autres</option>
+            <option value="ps4" <?php if($item['category'] == "ps4"){echo "selected";} ?>>PS4</option>
+            <option value="ps3" <?php if($item['category'] == "ps3"){echo "selected";} ?>>PS3</option>
+            <option value="xbox one" <?php if($item['category'] == "xbox one"){echo "selected";} ?>>Xbox One</option>
+            <option value="xbox 360" <?php if($item['category'] == "xbox 360"){echo "selected";} ?>>Xbox 360</option>
+            <option value="switch" <?php if($item['category'] == "switch"){echo "selected";} ?>>Switch</option>
+            <option value="3DS-2DS" <?php if($item['category'] == "3DS-2DS\""){echo " selected";} ?>>3DS/2DS</option>
+            <option value="pc" <?php if($item['category'] == "pc"){echo "selected";} ?>>PC</option>
+            <option value="autres" <?php if($item['category'] == "autres"){echo "selected";} ?>>Autres</option>
         </optgroup>
     </select><br>
-    <label for="brand">Marque/Editeur</label><br>
+    <label for="brand">Marque/Editeur</label>
     <input type="text" name="brand" id="brand" value="<?php if (isset($item['brand'])) {echo $item['brand'];} ?>"><br><br>
-    <label for="price">Prix (en euros)</label><br>
+    <label for="price">Prix (en euros)</label>
     <input type="text" name="price" id="price" value="<?php if (isset($item['price'])) {echo $item['price'];} ?>"><br><br>
-    <label for="status">Etat</label><br>
+    <label for="status">Etat</label>
     <select name="status" id="status">
-        <option value="Neuf" selected="<?php if($item['status'] == "Neuf"){echo "selected";} ?>">Neuf</option>
-        <option value="TresBonEtat" selected="<?php if($item['status'] == "TresBonEtat"){echo "selected";} ?>">Très Bon Etat</option>
-        <option value="BonEtat" selected="<?php if($item['status'] == "BonEtat"){echo "selected";} ?>">Bon Etat</option>
-        <option value="Use" selected="<?php if($item['status'] == "Use"){echo "selected";} ?>">Usé</option>
-        <option value="TresUse" selected="<?php if($item['status'] == "TresUse"){echo "selected";} ?>">Très Usé</option>
+        <option value="Neuf" <?php if($item['status'] == "Neuf"){echo "selected";} ?>>Neuf</option>
+        <option value="TresBonEtat" <?php if($item['status'] == "TresBonEtat"){echo "selected";} ?>>Très Bon Etat</option>
+        <option value="BonEtat" <?php if($item['status'] == "BonEtat"){echo "selected";} ?>>Bon Etat</option>
+        <option value="Use" <?php if($item['status'] == "Use\""){echo " selected";} ?>>Usé</option>
     </select><br>
-    <label for="description">Description</label><br>
+    <label for="description">Description</label>
     <textarea name="description" id="description" cols="30" rows="10"><?php if (isset($item['description'])) {
             echo $item['description'];
         } ?></textarea><br>
-    <label for="receipt">Reçu</label><br>
+    <label for="receipt">Reçu</label>
     <input type="radio" name="receipt" value="Oui" checked="<?php if($item['receipt'] == "Oui"){echo "checked";} ?>">Oui
     <input type="radio" name="receipt" value="Non" checked="<?php if($item['receipt'] == "Non"){echo "checked";} ?>">Non <br>
-    <label for="warrantly">Garantie</label><br>
-    <input type="radio" name="warrantly" value="Oui" checked="<?php if($item['receipt'] == "Oui"){echo "checked";} ?>">Oui
-    <input type="radio" name="warrantly" value="Non" checked="<?php if($item['receipt'] == "Non"){echo "checked";} ?>">Non <br>
-    <label for="username">purchase_date</label><br>
+    <label for="warrantly">Garantie</label>
+    <input type="radio" name="warranty" value="Oui" checked="<?php if($item['warranty'] == "Oui"){echo "checked";} ?>">Oui
+    <input type="radio" name="warranty" value="Non" checked="<?php if($item['warranty'] == "Non"){echo "checked";} ?>">Non <br>
+    <label for="username">Date d'achat</label>
     <input type="date" name="purchase_date" id="purchase_date" value="<?php echo $item['purchase_date'];?>"><br>
     <input type="submit" value="Modifier mes infos" name="sub_infos">
 </form>
 </div>
 
 <?php
-/**
- * Created by PhpStorm.
- * User: npaul
- * Date: 10/01/2018
- * Time: 21:10
- */
-//on convertit la date pour la mettre au format de la bdd
-/*$array = explode("-", $_POST['birth']);
-$day = $array[0];
-$month = $array[1];
-$year = $array['2'];
-$date = $year . "-" . $month . "-" . $day;*/
-if((isset($_POST['sub_infos'])) && (!empty($_POST['last_name'])) && (!empty($_POST['first_name']))
-    && (!empty($_POST['mail'])) && (!empty($_POST['birth'])) && (!empty($_POST['address'])) && (!empty($_POST['postal_code']))
-    && (!empty($_POST['city'])) && (!empty($_POST['country'])) && (!empty($_POST['phone']))) {
-    echo "test";
-    $request = $db->prepare("UPDATE user SET last_name = :last_name, first_name = :first_name, mail = :mail, date_of_birth = :birth, address = :address, details = :details, postal_code = :postal_code, city = :city, country = :country, phone = :phone WHERE id_user = $id");
+if((isset($_POST)) && (!empty($_POST['name'])) && (!empty($_POST['category'])) && (!empty($_POST['brand']))
+    && (!empty($_POST['price'])) && (!empty($_POST['status'])) && (!empty($_POST['description']))
+    && (!empty($_POST['receipt'])) && (!empty($_POST['warranty']))) {
+    $request = $db->prepare("UPDATE item SET name = :name, category= :category, brand = :brand, price = :price, status = :status, description = :description, receipt = :receipt, warranty = :warranty WHERE id_item = $id_item");
     $request->execute([
-        ':last_name' => $_POST['last_name'],
-        ':first_name' => $_POST['first_name'],
-        ':mail' => $_POST['mail'],
-        ':birth' => $_POST['birth'],
-        ':address' => $_POST['address'],
-        ':details' => $_POST['details'],
-        ':postal_code' => $_POST['postal_code'],
-        ':city' => $_POST['city'],
-        ':country' => $_POST['country'],
-        ':phone' => $_POST['phone']
+        ':name' => $_POST['name'],
+        ':category' => $_POST['category'],
+        ':brand' => $_POST['brand'],
+        ':price' => $_POST['price'],
+        ':status' => $_POST['status'],
+        ':description' => $_POST['description'],
+        ':receipt' => $_POST['receipt'],
+        ':warranty' => $_POST['warranty']
     ]);
-    print_r($request->errorInfo());
     echo "Vos mises à jour ont été prise en compte";
 }
 ?>

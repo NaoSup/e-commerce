@@ -43,7 +43,7 @@ $seller = $req->fetch();
                     } else {echo "Non renseigné";}
                     ?>
                 <b>Reçu :</b> <?php echo $item['receipt']; ?>
-                <b>Garantie :</b> <?php echo $item['warrantly']; ?><br>
+                <b>Garantie :</b> <?php echo $item['warranty']; ?><br>
             <img src="<?php echo $item['photo']; ?>" alt="" width="300">
             <hr>
             <p id="description">
