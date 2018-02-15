@@ -8,9 +8,11 @@ include('./includes/header.php');
 
 
 
-<div class="recap">
+<div class="row">
+    <div id="recap" >
 
-   <div id="tableau2">
+
+   <div id="tableau2" class=" col-xs-12 col-sm-12 col-md-6 col-lg-8 " >
        <h3>Récapitulatif de votre commande</h3>
     <table class="table table-striped table-hover">
         <tr>
@@ -47,7 +49,7 @@ include('./includes/header.php');
     </table>
    </div>
 
-    <div id="coordonnee">
+    <div id="coordonnee" class=" col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2 ">
         <h3>Récapitulatif de vos coordonnées</h3>
         <?php
         $id = $_SESSION['id'];
@@ -64,6 +66,8 @@ include('./includes/header.php');
     echo "Téléphone : ".$user['phone'] . "<br>";
         ?>
     </div>
+    </div>
+
 </div>
 
         <div class="paiement">
@@ -84,10 +88,10 @@ include('./includes/header.php');
                     "mastercard" => "/^5[1-5][0-9]{14}$/",
                     "amex" => "/^3[47][0-9]{13}$/",
                 );
-
                 if (preg_match($cardtype['visa'], $number) || (preg_match($cardtype['mastercard'], $number)) || (preg_match($cardtype['amex'], $number))) {
                     $cart = $_SESSION['cart'];
-                    echo $_SESSION['cart'];                    foreach ($cart as $item) {
+
+                    foreach ($cart as $item) {
                         $id = $item;
                         $rq = $db->prepare("UPDATE item SET id_buyer=:id_buyer, sell_date= NOW() WHERE id_item = $id");
                         $rq->execute([

@@ -70,29 +70,44 @@ main{
     margin-left: 10%;
 }
 
+#produit{
+    background-color: white;
+}
+#text{
+    text-align: left;
+    margin-left: 35%;
+}
+
 #tableau1{
     padding: 5px;
     margin-left: 20%;
     margin-right: 15%;
 }
 
-.recap{
+#recap{
     width: 100%;
     background-color: white;
-    padding: 25px;
-    height: 15%;
+    height: 50vh;
+    margin: 10%;
+    margin-top: 5%;
+    padding-top: 15px;
 }
 
-.recap #tableau2{
+#tableau2{
     position: relative;
-    width: 30%;
+    width: 400px;
     height: 40%;
+    margin-top: 50px;
     margin-left: 55%;
 }
 
-.recap #coordonnee{
+#coordonnee{
+    display: inline;
     position: relative;
     width: 40%;
+    left: 15%;
+    float: left;
+    top:-40%;
 }
 
 #payer{
@@ -104,8 +119,9 @@ main{
 }
 
 .paiement{
-    padding:  5%;
-    margin-left: 35%;
+    margin-bottom: 150px;
+    margin-left: 650px;
+    margin-top: -80px;
 }
 
 #footer {
