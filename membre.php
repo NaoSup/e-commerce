@@ -108,9 +108,7 @@ if (!empty($items)) {
                     ?>
                 </td>
                 <td>
-                    <a href="profil.php?id_user=<?php echo $item['id_buyer']?>">
                         <?php echo $user['username']; ?>
-                    </a>
                 </td>
                 <td>
                     <a href="page_produit.php?id_item=<?php echo $item['id_item']?>">
@@ -171,9 +169,7 @@ if (!empty($items)) {
                     ?>
                 </td>
                 <td>
-                    <a href="Profil/profil.php?id_user=<?php echo $item['id_seller']?>">
                         <?php echo $user['username']; ?>
-                    </a>
                 </td>
                 <td>
                     <a href="page_produit.php?id_item=<?php echo $item['id_item']?>">
