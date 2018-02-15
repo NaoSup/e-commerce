@@ -19,35 +19,37 @@ $req = $db->query("SELECT * FROM user WHERE id_user = $id_seller");
 $seller = $req->fetch();
 ?>
 <div class="row">
-    <div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2" style="text-align: center ; margin: 0 auto">
-        <h3>Présentation du produit</h3>
-        <img src="<?php echo $item['photo']; ?>" alt="" width="300">
-        <h4><?php echo $item['name']; ?></h4>
-        <article>
-            Mise en ligne le : <?php
+    <div class="pageproduit col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+        <div id="date">
+            <i>Mise en ligne le <?php
             $array = explode(" ", $item['date']);
             $date = explode("-",$array[0]);
             $new_date = "$date[2]-$date[1]-$date[0]";
             echo $new_date;
-            ?> <br>
-            Catégorie : <?php echo $item['category']; ?> <br>
-            Marque/Editeur : <?php echo $item['brand']; ?> <br>
-            <span id="price">Prix : <?php echo $item['price']; ?> €<br></span>
-            Etat : <?php echo $item['status']; ?> <br>
-            Date d'achat : <?php
-            if(isset($item['purchase_date'])) {
-                $array = explode(" ", $item['purchase_date']);
-                $date = explode("-",$array[0]);
-                $new_date = "$date[2]-$date[1]-$date[0]";
-                echo $new_date;
-            } else {echo "Non renseigné";}
-            ?>
-            <br>
-            Reçu : <?php echo $item['receipt']; ?> <br>
-            Garantie : <?php echo $item['warrantly']; ?> <br>
-            <p>
-                Description : <?php echo $item['description']; ?> <br>
+                ?> </i>
+        </div>
+        <h4><?php echo $item['name']; ?></h4>
+        <article>
+            <div id="categorie"><?php echo $item['category']; ?></div>  <br>
+            <i><?php echo $item['brand']; ?></i> <br>
+            <span id="price"><?php echo $item['price']; ?> €<br></span>
+                <b>Etat :</b> <?php echo $item['status']; ?>
+                <b>Date d'achat :</b> <?php
+                    if(isset($item['purchase_date'])) {
+                        $array = explode(" ", $item['purchase_date']);
+                        $date = explode("-",$array[0]);
+                        $new_date = "$date[2]-$date[1]-$date[0]";
+                        echo $new_date;
+                    } else {echo "Non renseigné";}
+                    ?>
+                <b>Reçu :</b> <?php echo $item['receipt']; ?>
+                <b>Garantie :</b> <?php echo $item['warrantly']; ?><br>
+            <img src="<?php echo $item['photo']; ?>" alt="" width="300">
+            <hr>
+            <p id="description">
+                <?php echo $item['description']; ?> <br>
             </p>
+            <hr>
         </article>
         <?php
             if(isset($_SESSION['id']) && $_SESSION['id'] == $id_seller){

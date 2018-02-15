@@ -7,13 +7,28 @@ include('./includes/header.php');
 ?>
 
 
-
-<div class="row">
-    <div id="recap" >
-
-
-   <div id="tableau2" class=" col-xs-12 col-sm-12 col-md-6 col-lg-8 " >
-       <h3>Récapitulatif de votre commande</h3>
+<div id="recap">
+  <div class="row">
+      <div id="coordonnee" class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <h3>Récapitulatif de vos coordonnées</h3>
+        <?php
+        //col-xs-12 col-sm-12 col-md-6 col-lg-6
+        $id = $_SESSION['id'];
+        $req = $db->query("SELECT * FROM user WHERE id_user = $id");
+        $user = $req->fetch();
+    echo "<b>Nom : </b>".$user['last_name'] . "<br>";
+    echo "<b>Prénom : </b>".$user['first_name'] . "<br>";
+    echo "<b>Email : </b>".$user['mail'] . "<br>";
+    echo "<b>Adresse : </b>".$user['address'] . "<br>";
+    echo "<b>Details : </b>".$user['details'] . "<br>";
+    echo "<b>Code Postal :</b> ".$user['postal_code'] . "<br>";
+    echo "<b>Ville : </b>".$user['city'] . "<br>";
+    echo "<b>Pays : </b>".$user['country'] . "<br>";
+    echo "<b>Téléphone : </b>".$user['phone'] . "<br>";
+        ?>
+    </div>
+   <div id="tableau2" class="col-xs-12 col-sm-12 col-md-6 col-lg-6" >
+       <h3>Récapitulatif de votre commande</h3><br>
     <table class="table table-striped table-hover">
         <tr>
             <td><b>Produit</b></td>
@@ -48,36 +63,20 @@ include('./includes/header.php');
         </tr>
     </table>
    </div>
-
-    <div id="coordonnee" class=" col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2 ">
-        <h3>Récapitulatif de vos coordonnées</h3>
-        <?php
-        $id = $_SESSION['id'];
-        $req = $db->query("SELECT * FROM user WHERE id_user = $id");
-        $user = $req->fetch();
-    echo "Nom : ".$user['last_name'] . "<br>";
-    echo "Prénom : ".$user['first_name'] . "<br>";
-    echo "Email : ".$user['mail'] . "<br>";
-    echo "Adresse : ".$user['address'] . "<br>";
-    echo "Details : ".$user['details'] . "<br>";
-    echo "Code Postal : ".$user['postal_code'] . "<br>";
-    echo "Ville : ".$user['city'] . "<br>";
-    echo "Pays : ".$user['country'] . "<br>";
-    echo "Téléphone : ".$user['phone'] . "<br>";
-        ?>
+</div>
+<hr>
+    <div class="row">
+        <div class="paiement col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <h3>Paiement</h3>
+        <form action="" method="post">
+            <label for="cardnumber">Numéro de carte bancaire :</label><br>
+            <input type="number" name="cardnumber"> <br><br>
+            <input id="payer" type="submit" value="Payer" name="pay">
+        </form>
     </div>
-    </div>
-
 </div>
 
-        <div class="paiement">
-            <h3>Paiement</h3>
-            <form action="" method="post">
-                <label for="cardnumber">Numéro de carte bancaire :</label><br>
-                <input type="number" name="cardnumber"> <br><br>
-                <input id="payer" type="submit" value="Payer" name="pay">
-            </form>
-        </div>
+
 <?php
         if(isset($_POST['pay'])){
             if(isset($user['address']) && isset($user['postal_code']) && isset($user['city']) && isset($user['country']) && isset($user['phone'])) {

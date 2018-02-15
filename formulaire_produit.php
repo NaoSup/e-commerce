@@ -41,10 +41,9 @@ if(isset($_SESSION['id'])) {
         <label for="status">Etat</label>
         <select name="status" id="status">
             <option value="Neuf" selected>Neuf</option>
-            <option value="TresBonEtat">Très Bon Etat</option>
-            <option value="BonEtat">Bon Etat</option>
-            <option value="Use">Usé</option>
-            <option value="TresUse">Très Usé</option>
+            <option value="Très Bon Etat">Très Bon Etat</option>
+            <option value="Bon Etat">Bon Etat</option>
+            <option value="Usé">Usé</option>
         </select>
         <label for="description">Description</label>
         <textarea name="description" id="description" cols="30" rows="10"><?php if (isset($_POST['description'])) {
